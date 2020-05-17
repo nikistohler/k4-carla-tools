@@ -43,6 +43,19 @@ class CpController extends Controller
         ));
 
     }
+    public function actionSend(){
+
+        $result = $this->module->message->sendMeeps(
+            $this->module->settings->email,
+            $this->module->carla->getMeepsFromLastWeek(),
+            $this->module->date->getLastWeekStartAndEndDate()
+        );
+
+        return $this->asJson([
+            'success' => $result
+        ]);
+
+    }
 
 
 }

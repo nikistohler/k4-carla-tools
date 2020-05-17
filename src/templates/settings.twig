@@ -35,4 +35,57 @@
     value: settings['email']})
 }}
 
-<a target="_blank" href="{{ cpUrl()~'/k4-carla-tools/preview' }}" class="btn">Preview Email</a>
+<div class="buttons">
+    <a target="_blank" href="{{ cpUrl()~'/k4-carla-tools/preview' }}" class="btn">Preview Email</a>
+    <a href="javascript:void(0);" id="k4-carla-tools-send-email" class="btn submit">Send Email</a>
+    <div class="utility-status">
+        <div class="progressbar" style="opacity: 0;">
+            <div class="progressbar-inner" style="width: 100%;"></div>
+        </div>
+        <div class="progressbar-status hidden"></div>
+        <div class="alldone" data-icon="done" style="opacity: 0;"></div>
+    </div>
+</div>
+
+
+{% css %}
+    .utility-status {
+    float: left;
+    margin-left: 10px;
+    display: block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    }
+    .utility-status .alldone {
+        margin-top: 11px;
+    }
+    .utility-status .progressbar {
+        width: 100%;
+        left: 0;
+        top:14px;
+    }
+
+{% endcss %}
+{% js %}
+    $(document).ready(function () {
+    $('#settings-k4-carla-tools-send-email')
+    .off('click')
+    .on('click', function () {
+    $('.utility-status .progressbar').css('opacity', 1);
+    $.get(
+    "{{ cpUrl()~'/k4-carla-tools/send' }}"
+    )
+    .done(
+    function (result) {
+    $('.utility-status .progressbar').css('opacity', 0);
+    $('.utility-status .alldone').css('opacity', 1);
+    })
+    .fail(
+    function (error) {
+    console.log(error);
+    });
+    });
+    });
+
+{% endjs %}
