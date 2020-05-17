@@ -2,7 +2,7 @@
     "name": "k4/k4-carla-tools",
     "description": "manage carla",
     "type": "craft-plugin",
-    "version": "1.2",
+    "version": "1.2.1",
     "keywords": [
         "craft",
         "cms",

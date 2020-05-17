@@ -36,12 +36,12 @@ class CpController extends Controller
 
     public function actionPreview(){
 
-        return $this->renderTemplate('k4-carla-tools/email',array(
+        $content = $this->view->renderTemplate('k4-carla-tools/email',array(
             'meeps' => $this->module->carla->getMeepsFromLastWeek(),
             'week' =>  $this->module->date->getLastWeekStartAndEndDate()
-
         ));
 
+        return $this->asRaw($content);
     }
     public function actionSend(){
 
