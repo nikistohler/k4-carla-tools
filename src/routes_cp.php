@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'k4-carla-tools'          => 'k4-carla-tools/cp/index',
+    'k4-carla-tools/preview'          => 'k4-carla-tools/cp/preview',
 ];

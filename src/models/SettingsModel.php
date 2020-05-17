@@ -17,4 +17,10 @@ class SettingsModel extends Model {
      * @var string $password
      */
     public $password;
+
+    /**
+     * @var string $email
+     */
+    public $email;
+
 }

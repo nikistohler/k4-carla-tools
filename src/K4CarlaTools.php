@@ -102,19 +102,22 @@ class K4CarlaTools extends Plugin
      */
     public function getCpNavItem()
     {
-        $currentUser = Craft::$app->getUser()->getIdentity();
-        $allowAdminChanges = Craft::$app->getConfig()->getGeneral()->allowAdminChanges;
-
-        $cpNavItem =  parent::getCpNavItem();
-        $cpNavItem['subnav'] = [];
         $cp_nav = include __DIR__ . '/nav_cp.php';
 
-        foreach($cp_nav as $key => $item)
-        {
-            $cpNavItem['subnav'][$key] = $item;
-        }
-        return $cpNavItem;
+        if (count($cp_nav) > 0) {
+            $currentUser = Craft::$app->getUser()->getIdentity();
+            $allowAdminChanges = Craft::$app->getConfig()->getGeneral()->allowAdminChanges;
 
+            $cpNavItem =  parent::getCpNavItem();
+            $cpNavItem['subnav'] = [];
+
+
+            foreach($cp_nav as $key => $item)
+            {
+                $cpNavItem['subnav'][$key] = $item;
+            }
+            return $cpNavItem;
+        }
     }
 
 
@@ -142,7 +145,7 @@ class K4CarlaTools extends Plugin
             'view' => $this->module->view,
             'mailer' => $this->module->mailer,
             'date' => $this->date,
-            'settings' => $this->getSettings()
+            'settings' => $this->settings
         ]);
 
     }

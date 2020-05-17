@@ -34,7 +34,7 @@ class CpController extends Controller
 
     public $enableCsrfValidation = true;
 
-    public function actionIndex(){
+    public function actionPreview(){
 
         return $this->renderTemplate('k4-carla-tools/email',array(
             'meeps' => $this->module->carla->getMeepsFromLastWeek(),

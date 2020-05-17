@@ -1,5 +1,11 @@
 {% import "_includes/forms" as forms %}
 
+{% set phpBinPath = constant('PHP_BINARY')? constant('PHP_BINARY') : '/usr/bin/php' %}
+
+{% set code %}
+    <code>0 0 * * MON {{ phpBinPath }} {{ alias('@root/craft') }} k4-carla-tools/send/mail</code>
+{% endset %}
+
 {{ forms.textField({
     label: 'Username Email'|t,
     instructions: 'Email address of the API user',
@@ -15,3 +21,18 @@
     name: 'password',
     value: settings['password']})
 }}
+
+{{ forms.field({
+    label: "Cron Job",
+    instructions: "Create a cron job with the following command to send the email on a scheduled basis (e.g. every Monday @ 0:00 ). Change `"~phpBinPath~"` to the PHP path (if different).<br>"~code })
+}}
+
+{{ forms.textField({
+    label: 'Email address'|t,
+    instructions: 'Email address where the digest is sent to',
+    id: 'email',
+    name: 'email',
+    value: settings['email']})
+}}
+
+<a target="_blank" href="{{ cpUrl()~'/k4-carla-tools/preview' }}" class="btn">Preview Email</a>

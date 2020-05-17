@@ -24,6 +24,7 @@ class SendController extends Controller
     public function actionMail(): int
     {
         $result = $this->module->message->sendMeeps(
+            $this->module->settings->email,
             $this->module->carla->getMeepsFromLastWeek(),
             $this->module->date->getLastWeekStartAndEndDate()
         );

@@ -41,7 +41,7 @@ class MessageService extends Component
      */
     public $basePath;
 
-    public function sendMeeps($meeps,$week)
+    public function sendMeeps($email,$meeps,$week)
     {
         $oldTemplatesPath = $this->view->getTemplatesPath();
         $this->view->setTemplatesPath($this->basePath);
@@ -50,7 +50,7 @@ class MessageService extends Component
 
         $message = new Message();
         $message->setFrom(array("noreply@kreisvier.ch" => 'K4 Intern'));
-        $message->setTo("christian.hiller@kreisvier.ch");
+        $message->setTo($email);
         $message->setSubject("k4 Allgemein KW ".$week["weekNumber"]);
         $message->setHtmlBody($body);
 
