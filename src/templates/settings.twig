@@ -1,0 +1,17 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Username Email'|t,
+    instructions: 'Email address of the API user',
+    id: 'username',
+    name: 'username',
+    value: settings['username']})
+}}
+
+{{ forms.passwordField({
+    label: 'Password'|t,
+    instructions: 'password of the API user',
+    id: 'password',
+    name: 'password',
+    value: settings['password']})
+}}

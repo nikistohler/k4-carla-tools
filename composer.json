@@ -1,0 +1,45 @@
+{
+    "name": "k4/k4-carla-tools",
+    "description": "manage carla",
+    "type": "craft-plugin",
+    "version": "1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "k4 carla tools"
+    ],
+    "support": {
+        "docs": "https://www.kreivier.ch",
+        "issues": "https://www.kreivier.ch"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Hiller",
+            "homepage": "https://www.kreisvier.ch"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1",
+        "phpoffice/phpspreadsheet": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "k4\\k4carlatools\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "k4 Carla Tools",
+        "handle": "k4-carla-tools",
+        "hasCpSettings": true,
+        "hasCpSection": true,
+        "changelogUrl": "???",
+        "class": "k4\\k4carlatools\\K4CarlaTools"
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0",
+        "vlucas/phpdotenv": "^3.3"
+    }
+}
