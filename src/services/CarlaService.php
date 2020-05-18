@@ -125,7 +125,7 @@ class CarlaService extends Component
     public function decorateMeep($text)
     {
 
-        $mentions = "/\[(@.*)\]\((.*)\)/";
+        $mentions = "/\[(@[a-zA-Z\ \-]*)\]\(([a-zA-Z\/0-9]*)\)/";
 
         $text = preg_replace($mentions, "<a style='text-decoration: none;font-weight: bold;color: #57a4f9;' href='https://projects.kreisvier.ch/#/$2'>$1</a>", $text);
 
