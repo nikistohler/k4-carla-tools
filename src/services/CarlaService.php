@@ -54,7 +54,7 @@ class CarlaService extends Component
     public function getMeeps($limit, $offset = false)
     {
 
-        $link = "https://projects.kreisvier.ch/api/v1/projects/26/meeps";
+        $link = "https://projects.kreisvier.ch/api/v1/projects/".$this->settings->groupId."/meeps";
 
         $data = array('limit' => $limit);
         if (!empty($offset)) {

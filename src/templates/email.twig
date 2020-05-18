@@ -400,7 +400,7 @@
 <!-- TODO: Integrate the border and the radius -->
 <!-- Preheader text -->
 <div style="display:none;font-size:1px;color:#5e5e5e;line-height:1px;font-family:Helvetica,Arial,sans-serif;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-    kreisvier communications | A_k4 Allgemein KW{{ week.weekNumber }} {{ week.weekYear }}
+    kreisvier communications | {{settings.groupName}} KW{{ week.weekNumber }} {{ week.weekYear }}
     <br>vom {{ week.weekStart|date('d.m') }} bis {{ week.weekEnd|date('d.m') }}
 </div>
 <!-- Spacer 40 -->
@@ -451,23 +451,14 @@
                                     <td align="center"><a target="_blank" href="#"><img alt="Icon digest mail"
                                                                                         border="0" class="bigimage"
                                                                                         height="90"
-                                                                                        src="https://projects.kreisvier.ch/assets/email/icon-digest-mail-899868b9e7baaa0939e70721f9322826.png"
+                                                                                        src="https://www.kreisvier.ch/tpl/img/logo.png"
                                                                                         style="display:block; border:none; outline:none; text-decoration:none;"
-                                                                                        width="80">
+                                                                                        width="90">
                                         </a></td>
                                 </tr>
                                 <!-- Spacing -->
                                 <tr>
                                     <td width="100%" height="20"></td>
-                                </tr>
-                                <!-- title -->
-                                <tr>
-                                    <!-- TODO: Make the headline smaller for smartphone and tablet over a class                         -->
-                                    <td class="headline-1"
-                                        style="font-family: Helvetica, Arial, sans-serif; font-size: 28px; color: #1a1a1a; text-align: center; line-height: 28px;"
-                                        st-ti tle="rightimage-title">
-                                        Neu und frisch in deine Inbox:
-                                    </td>
                                 </tr>
                                 <!-- NEW OUTLOOK 2013 FIX WHITESPACE 6 -->
                                 <tr>
@@ -482,21 +473,7 @@
                                     <td class="headline-2"
                                         style="font-family: Helvetica, Arial, sans-serif; font-size: 28px; font-weight: bold; color: #1a1a1a; text-align: center; line-height: 28px;"
                                         st-title="rightimage-title">
-                                        A_k4 Allgemein KW{{ week.weekNumber }} {{ week.weekYear }}
-                                        <br>vom {{ week.weekStart|date('d.m') }} bis {{ week.weekEnd|date('d.m') }}
-                                    </td>
-                                </tr>
-                                <!-- Spacing -->
-                                <tr>
-                                    <td width="100%" height="20">&nbsp;</td>
-                                </tr>
-                                <!-- content -->
-                                <tr>
-                                    <!-- TODO: Adjust the padding here -  for desktop more -->
-                                    <td style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; color: #5e5e5e; text-align: center; line-height: 24px;"
-                                        st-content="rightimage-p                        aragraph">
-                                        Die wichtigsten Aktivitäten auf der Protonet Box bekommst Du jetzt bequem in
-                                        deine Inbox zugestellt. So behälst Du den Überblick und verpasst nichts mehr.
+                                        Übersicht KW{{ week.weekNumber }} / {{ week.weekYear }}
                                     </td>
                                 </tr>
                                 <!-- Spacing -->
@@ -526,7 +503,7 @@
                     <tbody>
                     <!-- Spacing -->
                     <tr>
-                        <td width="100%" height="50"></td>
+                        <td width="100%" height="20"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -536,29 +513,6 @@
     </table>
 </div>
 
-<!-- Headline -->
-<div class="block">
-    <table width="100%" bgcolor="#f5f8fa" cellpadding="0" cellspacing="0" borde r="0" id="backgroundTable"
-           st-sortable="preheader" style="min-width:100%;">
-        <tbody>
-        <tr>
-            <td width="100%">
-                <table width="580" cellpadding="0" cellspacing="0" border="0" align="center"
-                       class="devicewidth">
-                    <tbody>
-                    <tr>
-                        <td width="100%"><a class="headline-3"
-                                            href="https://projects.kreisvier.ch/#/groups/416"
-                                            style="padding-left: 20px; text-align: left; font-family: Helvetica, Arial, sans-serif; color: #1a1a1a; font-size: 20px; line-height: 20px; text-decoration: none;">A_k4
-                                Allgemein</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 <!-- Spacer 12 -->
 <div class="block">
     <table width="100%" bgcolor="#f5f8fa" cellpadding="0" cellspacing="0" borde r="0" id="backgroundTable"
@@ -610,9 +564,9 @@
                                                 <td style="font-family: Helvetica, Arial, sans-serif; color: #999999; text-align: left; font-size: 11px; line-height: 16px; font-weight: bold;"
                                                     st-title="rightimage-title">
                                                     Neue Kommentare in <a
-                                                            href="https://projects.kreisvier.ch/#/groups/26"
+                                                            href="https://projects.kreisvier.ch/#/groups/{{settings.groupId}}"
                                                             style="font-family: Helvetica, Arial, sans-serif; color: #57a4f9; font-size: 11px; line-height: 16px; font-weight: bold;"
-                                                            target="_blank">A_k4 Allgemein</a></td>
+                                                            target="_blank">{{ settings.groupName }}</a></td>
                                             </tr>
                                             {% if meeps.success == true %}
                                                 {% for meep in meeps.result %}
@@ -683,7 +637,7 @@
                                                                                                             <a target="_blank"
                                                                                                                href="https://projects.kreisvier.ch/#/finder_large_preview?meep_id={{ meep.id }}&meep_file_id={{ file.id }}"
                                                                                                                style="display: block; width: 60px; height: 20px; text-transform: uppercase; text-decoration: none; color: #FFFFFF; font-family: Helvetica, Arial, sans-serif; font-weight: lighter; font-size: 14px; line-height: 16px;">
-                                                                                                                {{ file.name|split('.')[1] }}
+                                                                                                                {{ file.name|split('.')|reverse[0] }}
                                                                                                             </a></td>
                                                                                                     </tr>
                                                                                                     <tr>

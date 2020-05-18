@@ -43,7 +43,8 @@ class CpController extends Controller
 
         $content = $this->view->renderTemplate('k4-carla-tools/email',array(
             'meeps' => $this->module->carla->getMeepsFromLastWeek(),
-            'week' =>  $this->module->date->getLastWeekStartAndEndDate()
+            'week' =>  $this->module->date->getLastWeekStartAndEndDate(),
+            'settings' => $this->module->settings
         ));
 
         return $this->asRaw($content);
@@ -53,7 +54,6 @@ class CpController extends Controller
     public function actionSend(){
 
         $result = $this->module->message->sendMeeps(
-            $this->module->settings->email,
             $this->module->carla->getMeepsFromLastWeek(),
             $this->module->date->getLastWeekStartAndEndDate()
         );

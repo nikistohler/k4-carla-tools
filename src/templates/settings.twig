@@ -7,11 +7,30 @@
 {% endset %}
 
 {{ forms.textField({
+    label: 'Group ID'|t,
+    instructions: 'ID of the Group in Carla',
+    id: 'groupId',
+    name: 'groupId',
+    value: settings['groupId'],
+    required: true})
+}}
+
+{{ forms.textField({
+    label: 'Group Name'|t,
+    instructions: 'Name of the Group in Carla',
+    id: 'groupName',
+    name: 'groupName',
+    value: settings['groupName'],
+    required: true})
+}}
+
+{{ forms.textField({
     label: 'Username Email'|t,
     instructions: 'Email address of the API user',
     id: 'username',
     name: 'username',
-    value: settings['username']})
+    value: settings['username'],
+    required: true})
 }}
 
 {{ forms.passwordField({
@@ -19,7 +38,8 @@
     instructions: 'password of the API user',
     id: 'password',
     name: 'password',
-    value: settings['password']})
+    value: settings['password'],
+    required: true})
 }}
 
 {{ forms.field({
@@ -32,7 +52,8 @@
     instructions: 'Email address where the digest is sent to',
     id: 'email',
     name: 'email',
-    value: settings['email']})
+    value: settings['email'],
+    required: true})
 }}
 
 <div class="buttons">

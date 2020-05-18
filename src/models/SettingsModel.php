@@ -9,6 +9,16 @@ use craft\base\Model;
 class SettingsModel extends Model {
 
     /**
+     * @var Integer $groupId
+     */
+    public $groupId;
+
+    /**
+     * @var String $groupName
+     */
+    public $groupName;
+
+    /**
      * @var string $username
      */
     public $username;

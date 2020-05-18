@@ -136,7 +136,8 @@ class K4CarlaTools extends Plugin
             'db' => $this->module->db,
             'view' => $this->module->view,
             'mailer' => $this->module->mailer,
-            'basePath' => $this->basePath
+            'basePath' => $this->basePath,
+            'settings' => $this->settings
         ]);
 
         $this->set('carla',[
