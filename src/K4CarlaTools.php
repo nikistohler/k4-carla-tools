@@ -129,6 +129,7 @@ class K4CarlaTools extends Plugin
     {
         $this->set('date',[
             'class' => DateService::class,
+            'settings' => $this->settings
         ]);
 
         $this->set('message',[

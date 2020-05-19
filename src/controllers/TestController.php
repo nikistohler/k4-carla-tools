@@ -36,8 +36,8 @@ class TestController extends Controller
     public function actionIndex(){
 
         return $this->renderTemplate('k4-carla-tools/email',array(
-            'meeps' => $this->module->carla->getMeepsFromLastWeek(),
-            'week' =>  $this->module->date->getLastWeekStartAndEndDate()
+            'meeps' => $this->module->carla->getMeepsFromWantedWeek(),
+            'week' =>  $this->module->date->getWantedWeekStartAndEndDate()
 
         ));
 

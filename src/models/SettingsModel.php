@@ -19,18 +19,23 @@ class SettingsModel extends Model {
     public $groupName;
 
     /**
-     * @var string $username
+     * @var String $username
      */
     public $username;
 
     /**
-     * @var string $password
+     * @var String $password
      */
     public $password;
 
     /**
-     * @var string $email
+     * @var String $email
      */
     public $email;
+
+    /**
+     * @var Boolean $lastWeek
+     */
+    public $lastWeek;
 
 }

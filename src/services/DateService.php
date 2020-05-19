@@ -8,19 +8,22 @@ use craft\base\Component;
 use craft\db\Connection;
 use craft\web\View;
 use DateTime;
+use k4\k4carlatools\models\SettingsModel;
 use Kint\Kint;
 use yii\mail\MailerInterface;
 
 /**
  * Class DateService
  * @package k4\k4carlatools\services
- *
+ * @property SettingsModel $settings
  */
 class DateService extends Component
 {
-    public function getLastWeekStartAndEndDate(){
+    public $settings;
+
+    public function getWantedWeekStartAndEndDate(){
         return $this->getStartAndEndDateOfWeek(
-            $this->getCurrentWeekNumber()-1,
+            $this->getWantedWeekNumber(),
             $this->getCurrentYear()
         );
     }
@@ -38,15 +41,27 @@ class DateService extends Component
     public function getCurrentWeekNumber(){
 
         return (new DateTime)->format("W");
+    }
 
+    public function getWantedWeekNumber()
+    {
+        if ($this->settings->lastWeek == true)
+            return $this->getLastWeekNumber();
+
+        return $this->getCurrentWeekNumber();
 
     }
+
+    public function getLastWeekNumber(){
+
+        return (new DateTime)->modify('last sunday')->format("W");
+    }
+
+
 
     public function getCurrentYear(){
 
         return (new DateTime)->format("Y");
-
     }
-
 
 }

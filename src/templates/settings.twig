@@ -1,3 +1,4 @@
+
 {% import "_includes/forms" as forms %}
 
 {% set phpBinPath = constant('PHP_BINARY')? constant('PHP_BINARY') : '/usr/bin/php' %}
@@ -54,6 +55,14 @@
     name: 'email',
     value: settings['email'],
     required: true})
+}}
+
+{{ forms.lightswitchField({
+    label: 'Last week'|t,
+    instructions: 'collect last weeks meeps instead of current weeks meeps',
+    id: 'lastWeek',
+    name: 'lastWeek',
+    on: settings['lastWeek']})
 }}
 
 <div class="buttons">

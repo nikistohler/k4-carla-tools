@@ -92,18 +92,18 @@ class CarlaService extends Component
 
     }
 
-    public function isLastMeepWithinLastWeek($meeps){
+    public function isLastMeepWithinWantedWeek($meeps){
 
         $last = DateTime::createFromFormat(DATE_ATOM, end($meeps)["created_at"]);
 
-        $week = $this->date->getLastWeekStartAndEndDate();
+        $week = $this->date->getWantedWeekStartAndEndDate();
 
         return ($last > $week["weekStart"]);
     }
 
-    public function filterMeepsForLastWeekDaysOnly($meeps){
+    public function filterMeepsForWantedWeekDaysOnly($meeps){
 
-        $week = $this->date->getLastWeekStartAndEndDate();
+        $week = $this->date->getWantedWeekStartAndEndDate();
 
         return array_filter(
             array_map(
@@ -132,7 +132,7 @@ class CarlaService extends Component
         return $text;
     }
 
-    public function getMeepsFromLastWeek()
+    public function getMeepsFromWantedWeek()
     {
         try
         {
@@ -142,9 +142,9 @@ class CarlaService extends Component
                 $meeps = array_merge($meeps,$this->getMeeps(100,$offset));
                 $offset = end($meeps)["id"];
 
-            } while ($this->isLastMeepWithinLastWeek($meeps));
+            } while ($this->isLastMeepWithinWantedWeek($meeps));
 
-            $meeps = $this->filterMeepsForLastWeekDaysOnly($meeps);
+            $meeps = $this->filterMeepsForWantedWeekDaysOnly($meeps);
 
             return array(
                 "success" => true,
